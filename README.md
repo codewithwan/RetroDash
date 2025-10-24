@@ -194,4 +194,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-**Made with ❤️ for retro computing enthusiasts**
+**Made with <3 for retro computing enthusiasts**
