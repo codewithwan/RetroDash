@@ -1,6 +1,6 @@
 # RetroDash
 
-A productivity dashboard inspired by 1980s terminal aesthetics. Features to-do lists, Pomodoro timer, and weather information with a retro CRT screen effect.
+A productivity dashboard inspired by 1980s terminal aesthetics. Features to-do lists, Pomodoro timer, and weather information with a retro CRT screen effect. **Now built with React.js!**
 
 ## Features
 
@@ -31,10 +31,19 @@ A productivity dashboard inspired by 1980s terminal aesthetics. Features to-do l
 - Mock data generation for offline mode
 
 ### ⚡ Performance Features
-- **Fast Loading**: No external dependencies except Google Fonts
+- **Fast Loading**: Built with React + Vite for optimal performance
 - **Offline Support**: Full localStorage implementation
-- **Lightweight**: Pure vanilla JavaScript, HTML, and CSS
+- **Modern Stack**: React 19 with hooks and functional components
 - **Responsive**: Works on desktop and mobile devices
+- **Hot Module Replacement**: Fast development experience
+
+## Tech Stack
+
+- **React 19** - Modern UI library with latest features
+- **Vite** - Lightning-fast build tool and dev server
+- **Custom Hooks** - `useLocalStorage`, `useKeyboardShortcuts`
+- **CSS3** - Original retro CRT styling preserved
+- **ESLint** - Code quality and consistency
 
 ## Keyboard Shortcuts
 
@@ -68,19 +77,72 @@ A productivity dashboard inspired by 1980s terminal aesthetics. Features to-do l
    cd RetroDash
    ```
 
-2. Open `index.html` in your web browser:
+2. Install dependencies:
    ```bash
-   open index.html
-   # or simply double-click the file
+   npm install
    ```
 
-That's it! No build process or dependencies required.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory, ready to be deployed to any static hosting service.
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Development
+
+### Project Structure
+
+```
+RetroDash/
+├── src/
+│   ├── components/       # React components
+│   │   ├── Header.jsx
+│   │   ├── TodoModule.jsx
+│   │   ├── PomodoroModule.jsx
+│   │   ├── WeatherModule.jsx
+│   │   └── HelpModal.jsx
+│   ├── hooks/            # Custom React hooks
+│   │   ├── useLocalStorage.js
+│   │   └── useKeyboardShortcuts.js
+│   ├── utils/            # Utility functions
+│   │   ├── storage.js
+│   │   ├── sound.js
+│   │   └── helpers.js
+│   ├── App.jsx           # Main App component
+│   ├── main.jsx          # React entry point
+│   └── styles.css        # Global styles (retro CRT theme)
+├── index.html            # HTML entry point
+├── package.json          # Dependencies and scripts
+└── vite.config.js        # Vite configuration
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server with HMR
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint to check code quality
 
 ## Usage
 
 ### To-Do List
 1. Type your task in the input field at the top of the To-Do List module
-2. Press `ENTER` or click to add the task
+2. Press `ENTER` to add the task
 3. Click the `[X]` button to mark a task as complete
 4. Click the `[D]` button to delete a task
 5. Press `C` to clear all completed tasks
@@ -97,16 +159,6 @@ That's it! No build process or dependencies required.
 2. Press `ENTER` to fetch weather data
 3. Data is cached for 1 hour for offline viewing
 4. **Note**: Currently uses mock data for offline mode. To use real data, integrate OpenWeather API with your own API key.
-
-## File Structure
-
-```
-RetroDash/
-├── index.html      # Main HTML structure
-├── styles.css      # 1980s terminal styling with CRT effects
-├── app.js          # All JavaScript functionality
-└── README.md       # Documentation
-```
 
 ## Browser Compatibility
 
@@ -127,19 +179,14 @@ To clear all data, press `CTRL+K` and confirm.
 ## Customization
 
 ### Change Timer Duration
-Edit the timer values in `app.js`:
+Edit the timer values in `src/components/PomodoroModule.jsx`:
 ```javascript
-const state = {
-    timer: {
-        workMinutes: 25,    // Change work session length
-        breakMinutes: 5,    // Change break length
-        // ...
-    }
-};
+const [workMinutes] = useState(25);  // Change work session length
+const [breakMinutes] = useState(5);   // Change break length
 ```
 
 ### Change Color Scheme
-Edit CSS variables in `styles.css`:
+Edit CSS variables in `src/styles.css`:
 ```css
 :root {
     --terminal-bg: #0a0a0a;      /* Background color */
@@ -150,10 +197,10 @@ Edit CSS variables in `styles.css`:
 ```
 
 ### Integrate Real Weather API
-Replace the mock weather function in `app.js` with OpenWeather API:
+Replace the mock weather function in `src/components/WeatherModule.jsx` with OpenWeather API:
 ```javascript
 async function fetchWeather() {
-    const city = document.getElementById('weather-input').value.trim();
+    const city = inputValue.trim();
     const apiKey = 'YOUR_API_KEY'; // Get from openweathermap.org
     
     try {
@@ -168,15 +215,30 @@ async function fetchWeather() {
 }
 ```
 
+## Migration from Vanilla JS
+
+This project was originally built with vanilla JavaScript and has been migrated to React.js while preserving all original functionality and aesthetics. The migration brings:
+
+- ✅ Better code organization with component-based architecture
+- ✅ Improved state management with React hooks
+- ✅ Hot Module Replacement for faster development
+- ✅ Modern build tooling with Vite
+- ✅ All original features and styling preserved
+- ✅ Same keyboard shortcuts and user experience
+
+The original vanilla JS version is preserved in the `original-files` directory for reference.
+
 ## Features Roadmap
 
 - [ ] Add task categories and filtering
 - [ ] Export/import data functionality
-- [ ] Customizable timer durations
+- [ ] Customizable timer durations (UI controls)
 - [ ] Multiple weather locations
 - [ ] Daily statistics and analytics
 - [ ] Sound effect customization
 - [ ] Additional themes (amber, white, etc.)
+- [ ] TypeScript migration
+- [ ] Unit and integration tests
 
 ## License
 
@@ -186,7 +248,8 @@ MIT License - Feel free to use and modify for your own projects.
 
 - Font: VT323 from Google Fonts
 - Inspired by classic 1980s terminal interfaces
-- Built with vanilla JavaScript, HTML, and CSS
+- Built with React.js, Vite, and modern web technologies
+- Original vanilla JS version by codewithwan
 
 ## Contributing
 

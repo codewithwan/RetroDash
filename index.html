@@ -1,137 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RetroDash - Terminal Productivity Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="crt-overlay"></div>
-    <div class="scanlines"></div>
-    
-    <div class="container">
-        <header class="header">
-            <h1 class="title">RETRODASH v1.0</h1>
-            <div class="system-info">
-                <span id="current-date"></span> | <span id="current-time"></span>
-            </div>
-        </header>
-
-        <div class="help-text">
-            <p>Press [?] for keyboard shortcuts</p>
-        </div>
-
-        <main class="dashboard">
-            <!-- Todo List Module -->
-            <section class="module" id="todo-module">
-                <div class="module-header">
-                    <h2>[1] TODO LIST</h2>
-                    <span class="module-status" id="todo-status"></span>
-                </div>
-                <div class="module-content">
-                    <form id="todo-form" class="todo-form">
-                        <input 
-                            type="text" 
-                            id="todo-input" 
-                            placeholder="> Add new task..." 
-                            autocomplete="off"
-                            maxlength="80"
-                        >
-                    </form>
-                    <ul id="todo-list" class="todo-list"></ul>
-                </div>
-            </section>
-
-            <!-- Pomodoro Timer Module -->
-            <section class="module" id="pomodoro-module">
-                <div class="module-header">
-                    <h2>[2] POMODORO TIMER</h2>
-                    <span class="module-status" id="pomodoro-status">READY</span>
-                </div>
-                <div class="module-content pomodoro-content">
-                    <div class="timer-display">
-                        <div id="timer-time">25:00</div>
-                        <div class="timer-label" id="timer-label">WORK SESSION</div>
-                    </div>
-                    <div class="timer-controls">
-                        <button id="timer-start" class="btn">START [S]</button>
-                        <button id="timer-pause" class="btn" disabled>PAUSE [P]</button>
-                        <button id="timer-reset" class="btn">RESET [R]</button>
-                    </div>
-                    <div class="timer-stats">
-                        <div>Sessions: <span id="session-count">0</span></div>
-                        <div>Mode: <span id="timer-mode">25/5</span></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Weather Module -->
-            <section class="module" id="weather-module">
-                <div class="module-header">
-                    <h2>[3] WEATHER INFO</h2>
-                    <span class="module-status" id="weather-status">OFFLINE</span>
-                </div>
-                <div class="module-content weather-content">
-                    <form id="weather-form" class="weather-form">
-                        <input 
-                            type="text" 
-                            id="weather-input" 
-                            placeholder="> Enter city name..." 
-                            autocomplete="off"
-                        >
-                    </form>
-                    <div id="weather-display" class="weather-display">
-                        <p>Enter city name to get weather data</p>
-                        <p class="weather-note">Note: Uses OpenWeather API</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="footer-shortcuts">
-                [1-3] Focus Module | [TAB] Next Field | [ESC] Clear Focus | [?] Help
-            </div>
-        </footer>
-    </div>
-
-    <!-- Help Modal -->
-    <div id="help-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2>KEYBOARD SHORTCUTS</h2>
-            <div class="shortcuts-grid">
-                <div class="shortcut-section">
-                    <h3>NAVIGATION</h3>
-                    <p>[1] Focus Todo List</p>
-                    <p>[2] Focus Pomodoro Timer</p>
-                    <p>[3] Focus Weather Module</p>
-                    <p>[TAB] Next Input Field</p>
-                    <p>[ESC] Clear Focus/Close Modal</p>
-                </div>
-                <div class="shortcut-section">
-                    <h3>TODO LIST</h3>
-                    <p>[ENTER] Add Task</p>
-                    <p>[X] Mark Complete (when focused)</p>
-                    <p>[D] Delete Task (when focused)</p>
-                    <p>[C] Clear Completed</p>
-                </div>
-                <div class="shortcut-section">
-                    <h3>POMODORO TIMER</h3>
-                    <p>[S] Start Timer</p>
-                    <p>[P] Pause Timer</p>
-                    <p>[R] Reset Timer</p>
-                </div>
-                <div class="shortcut-section">
-                    <h3>GENERAL</h3>
-                    <p>[?] Toggle Help</p>
-                    <p>[CTRL+K] Clear All Data</p>
-                </div>
-            </div>
-            <p class="modal-close-hint">Press [ESC] or click outside to close</p>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
